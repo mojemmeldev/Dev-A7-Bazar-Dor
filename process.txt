@@ -1,0 +1,15 @@
+1. git connect
+
+2. layout.txs -> bangla font use and some settings
+    * import { Tiro_Bangla } from "next/font/google";
+    * const tiroBangla = Tiro_Bangla({
+        subsets: ["latin","bengali"],
+        weight: ["400"],
+        });
+    * `${tiroBangla.className}
+
+3. create /app/components/Header.tsx 
+    * date showing to bangla (create funtion and decleare)
+        const date=new Date().toLocaleDateString("bn-DB",{
+            dateStyle:"full"
+        })    
