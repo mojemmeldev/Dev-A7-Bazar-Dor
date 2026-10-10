@@ -14,6 +14,7 @@ const Navber = async () => {
   console.log(navCatData);
     return (
         <div className=' container mx-auto'>
+            
             <div className=' flex gap-8 mt-8'>
             {
                 navCatData.map(ncd=><div key={ncd.id}>
