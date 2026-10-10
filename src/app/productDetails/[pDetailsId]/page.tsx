@@ -12,10 +12,10 @@ const DynamicProductDetailsPage = async ({ params }) => {
     console.log("y", pDetailsData);
 
     return (
-        <div className=' container mx-auto mt-10'>
+        <div className=' bg-green-100 '>
 
 
-            <div >
+            <div className=' container mx-auto mt-10'>
 
                 <ProductDetailsCard data={pDetailsData} />
 

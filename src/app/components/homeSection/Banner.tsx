@@ -33,7 +33,7 @@ const Banner = () => {
                         </p>
 
                         <Link
-                            href="/products"
+                            href={"/AllProduct"}
                             className="btn btn-success btn-sm mt-4 min-h-0 border-0 px-4 text-white shadow-sm"
                         >
                             সব পণ্য দেখুন

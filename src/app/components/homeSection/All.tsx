@@ -16,10 +16,10 @@ const All =async () => {
 
 
     return (
-        <div className=' container mx-auto mt-10'>
+        <div  className=' container mx-auto mt-10'>
             <div>
                 
-                <span>সব পণ্য</span>
+                <span id='All-Products'>সব পণ্য</span>
             </div>
 
 

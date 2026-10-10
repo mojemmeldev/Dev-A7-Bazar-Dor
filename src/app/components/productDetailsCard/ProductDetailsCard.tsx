@@ -1,6 +1,7 @@
 
 "use client";
 
+import Link from "next/link";
 import React from "react";
 
 const formatPrice = (price) =>
@@ -23,33 +24,67 @@ const ProductDetailsCard = ({ data }) => {
     markets = [],
   } = data;
 
+
+  const getPriceChangeText = (today, yesterday) => {
+    const difference = today - yesterday;
+    const amount = Math.abs(difference);
+
+    if (difference > 0) {
+      return `গতকালের তুলনায় আজ দাম বেড়েছে ${amount} টাকা`;
+    }
+
+    if (difference < 0) {
+      return `গতকালের তুলনায় আজ দাম কমেছে ${amount} টাকা`;
+    }
+
+    return "গতকালের তুলনায় আজ দাম অপরিবর্তিত";
+  };
+
   const isUp = change.dir === "up";
 
   const averageMin = markets.length
     ? markets.reduce((sum, market) => sum + market.min, 0) /
-      markets.length
+    markets.length
     : 0;
 
   const averageMax = markets.length
     ? markets.reduce((sum, market) => sum + market.max, 0) /
-      markets.length
+    markets.length
     : 0;
 
   const lowestMarket = markets.length
     ? markets.reduce((lowest, market) =>
-        market.min < lowest.min ? market : lowest
-      )
+      market.min < lowest.min ? market : lowest
+    )
     : null;
 
   const highestMarket = markets.length
     ? markets.reduce((highest, market) =>
-        market.max > highest.max ? market : highest
-      )
+      market.max > highest.max ? market : highest
+    )
     : null;
 
   return (
-    <div className="mx-auto w-full max-w-6xl space-y-4 text-base-content">
+    <div className="  mx-auto w-full max-w-6xl space-y-4 text-base-content">
       {/* Product header */}
+
+      <div className="breadcrumbs  px-1 pt-10  text-xs text-base-content/60">
+        <ul>
+          <li>
+            <Link href="/" className="transition-colors hover:text-primary" > হোম </Link>
+          </li>
+
+          <li>
+            <Link href={"/"} className="transition-colors hover:text-primary" > {categoryNameBn} </Link>
+          </li>
+
+          <li>
+            <span className="font-medium text-base-content"> {nameBn} </span>
+          </li>
+        </ul>
+      </div>
+
+
       <div className="card border border-base-200 bg-base-100 shadow-sm">
         <div className="card-body flex flex-row items-center justify-between gap-3 p-4 sm:p-6">
           <div className="flex min-w-0 items-center gap-3">
@@ -65,7 +100,7 @@ const ProductDetailsCard = ({ data }) => {
                 {categoryNameBn} · প্রতি {unit === "kg" ? "কেজি" : unit}
               </p>
               <p className="mt-1 text-xs text-base-content/50">
-                বাংলাদেশের বাজারদর
+                বাংলাদেশের বাজারদর  {getPriceChangeText(today, yesterday)}
               </p>
             </div>
           </div>
@@ -80,9 +115,8 @@ const ProductDetailsCard = ({ data }) => {
             <p className="text-xs text-base-content/60">টাকা / কেজি</p>
 
             <div
-              className={`mt-1 flex items-center justify-end gap-1 text-xs font-semibold ${
-                isUp ? "text-error" : "text-success"
-              }`}
+              className={`mt-1 flex items-center justify-end gap-1 text-xs font-semibold ${isUp ? "text-error" : "text-success"
+                }`}
             >
               <span>{isUp ? "▲" : "▼"}</span>
               <span>{change.pct ?? 0}%</span>
@@ -257,19 +291,17 @@ function PriceCard({ title, price, today }) {
       </p>
 
       <p
-        className={`mt-1 text-xs ${
-          difference === 0
+        className={`mt-1 text-xs ${difference === 0
             ? "text-base-content/50"
             : increased
               ? "text-error"
               : "text-success"
-        }`}
+          }`}
       >
         {difference === 0
           ? "আজকের দামের সমান"
-          : `${Math.abs(difference).toLocaleString("bn-BD")} টাকা ${
-              increased ? "বেশি" : "কম"
-            }`}
+          : `${Math.abs(difference).toLocaleString("bn-BD")} টাকা ${increased ? "বেশি" : "কম"
+          }`}
       </p>
     </div>
   );
