@@ -11,7 +11,7 @@ const getNavCatData = async ()=>{
 
 const Navber = async () => {
   const navCatData= await getNavCatData();
-  console.log(navCatData);
+
     return (
         <div className=' container mx-auto'>
             

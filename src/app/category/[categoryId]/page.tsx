@@ -7,9 +7,9 @@ import React from 'react';
 const DynamicCategoryIdPage = async ({ params }) => {
  const {categoryId}= await params
      const res = await fetch(`${ApiShare}/products?category=${categoryId}`)
-     console.log(res);
+    
      const data=await res.json()
-     console.log("dcd",data);
+     
 
     return (
         <div className=' container mx-auto mt-10'>

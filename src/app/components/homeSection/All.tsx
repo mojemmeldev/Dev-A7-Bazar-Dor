@@ -7,8 +7,10 @@ import ProductCard from '../productCardShare/ProductCard';
 
 
 const All =async () => {
-    const TodayUpData= await fetch (`${ApiShare}/products`)
+    const TodayUpData= await fetch (`${ApiShare}/products/`)
+    console.log("alllll",TodayUpData);
     const data = await TodayUpData.json()
+    console.log("allll data", data);
     
     
 
