@@ -17,14 +17,15 @@ const AllProductsPage =async () => {
 
 
     return (
-        <div  className=' container mx-auto mt-10'>
+        <div className=' bg-green-100 '>
+            <div  className=' container mx-auto mt-10 '>
             <div>
                 
                 <span id='All-Products'>সব পণ্য</span>
             </div>
 
 
-            <div className=' grid grid-cols-3 gap-8'>
+            <div className=' grid grid-cols-3 gap-8 '>
                 {
                     data.map(all => <div key={all.id}>
                         <ProductCard data={all}></ProductCard>
@@ -32,6 +33,7 @@ const AllProductsPage =async () => {
                 }
 
             </div>
+        </div>
         </div>
     );
 };

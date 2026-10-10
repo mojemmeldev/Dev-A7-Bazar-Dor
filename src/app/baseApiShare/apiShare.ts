@@ -1,2 +1,2 @@
-const ApiShare = "https://api.abcz.workers.dev/api/bazardor"
+const ApiShare = "https://openapi.programming-hero.com/api/bazardor"
 export default ApiShare;

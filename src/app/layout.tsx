@@ -3,6 +3,7 @@ import { Tiro_Bangla } from "next/font/google";
 import "./globals.css";
 import Navber from "./components/navSection/Navber";
 import Header from "./components/navSection/Header";
+import Fotter from "./components/fotter/Fotter";
 
 // bangl font use function
 const tiroBangla = Tiro_Bangla({
@@ -29,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${tiroBangla.className}  h-full antialiased`} //declear bangla function
     >
-      <body className="min-h-full flex flex-col ">
+      <body className="min-h-full flex flex-col  ">
         <Header></Header>
         <Navber></Navber>
 
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {children}
         </main>
         
+        <Fotter></Fotter>
         </body>
     </html>
   );

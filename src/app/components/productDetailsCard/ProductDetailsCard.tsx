@@ -65,7 +65,7 @@ const ProductDetailsCard = ({ data }) => {
     : null;
 
   return (
-    <div className="  mx-auto w-full max-w-6xl space-y-4 text-base-content">
+    <div className=" container  mx-auto w-full  space-y-4 text-base-content">
       {/* Product header */}
 
       <div className="breadcrumbs  px-1 pt-10  text-xs text-base-content/60">

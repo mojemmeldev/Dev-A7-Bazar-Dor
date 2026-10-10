@@ -13,7 +13,7 @@ const ProductCard = ({ data }) => {
 
   return (
     <Link href={`/productDetails/${data.id}`}>
-      <div className="card w-full max-w-[430px] rounded-[20px] border border-[#dce5dc] bg-[#fbfdfb] shadow-sm">
+      <div className="card w-full  rounded-[20px] border border-[#dce5dc] bg-[#fbfdfb] shadow-sm">
         <div className="card-body gap-0 p-4">
 
           {/* Product information */}

@@ -11,23 +11,25 @@ import Banner from "./components/homeSection/Banner";
 
 export default function Home() {
   return (
-    <div className="container mx-auto">
+    <div className=" bg-green-100 ">
+      <div className=" container mx-auto bg-amber-400 ">
 
-     <div>banner
-      <Banner></Banner>
-     </div>
+        <div>
+          <Banner></Banner>
+        </div>
 
-     <div>aj dam barse
-      <TodayUp></TodayUp>
-     </div>
+        <div >
+          <TodayUp></TodayUp>
+        </div>
 
-     <div>dam komse
-      <TodayDown></TodayDown>
-     </div>
-     <div>sob
-      <All></All>
-     </div>
-      
+        <div>
+          <TodayDown></TodayDown>
+        </div>
+        <div>
+          <All></All>
+        </div>
+
+      </div>
     </div>
   );
 }

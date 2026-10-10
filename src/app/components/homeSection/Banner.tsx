@@ -12,7 +12,7 @@ const Banner = () => {
     })
 
     return (
-        <section className="mx-auto mt-6 w-full max-w-7xl px-3">
+        <section className=" container mx-auto mt-6 w-full ">
             <div className="card overflow-hidden rounded-2xl border border-[#e2e9e2] bg-[#fbfdfb] shadow-sm">
                 <div className="card-body flex flex-row items-center justify-between gap-3 p-4 sm:p-6">
 

@@ -2,32 +2,30 @@ import ApiShare from '@/app/baseApiShare/apiShare';
 import Link from 'next/link';
 import React from 'react';
 
-const getNavCatData = async () => {
-    const res = await fetch(`${ApiShare}/categories`)
-    const data = await res.json()
-    return data;
+const getNavCatData = async ()=>{
+  const res = await fetch (`${ApiShare}/categories`)
+    const data = await res.json ()
+   return data;
 }
 
 
 const Navber = async () => {
-    const navCatData = await getNavCatData();
+  const navCatData= await getNavCatData();
 
     return (
         <div className=' container mx-auto'>
-
+            
             <div className=' flex gap-8 mt-8'>
-                <Link href="/" className="transition-colors hover:text-primary" >
-                    হোম
-                </Link>
-                {
-                    navCatData.map(ncd => <div key={ncd.id}>
-                        <Link href={`/category/${ncd.slug}`}>
-                            <span> {ncd.icon} </span>
-                            <span> {ncd.nameBn} </span>
-                        </Link>
-                    </div>)
-                }
-            </div>
+                <Link href="/">হোম</Link>
+            {
+                navCatData.map(ncd=><div key={ncd.id}>
+                    <Link href={`/category/${ncd.slug}`}>
+                        <span> {ncd.icon} </span>
+                        <span> {ncd.nameBn} </span>
+                    </Link>
+                </div>)
+            }
+        </div>
         </div>
     );
 };

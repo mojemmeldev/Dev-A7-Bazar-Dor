@@ -2,7 +2,6 @@ import Image from 'next/image';
 import React from 'react';
 import Logo from'../../../../public/logo-icon.png'
 import { Button } from '@heroui/react';
-import Link from 'next/link';
 
 
 
@@ -16,9 +15,8 @@ const date=new Date().toLocaleDateString("bn-DB",{
 
 
     return (
-        <div className='container mx-auto'>
+        <div className='container mx-auto mt-10'>
             <div className='flex justify-between'>
-                <Link href="/">
                 <div  className='flex  gap-4'>
                     <Image src={Logo} alt='logo' width={50} height={50} className='bg-green-600'></Image>
                     <div>
@@ -26,7 +24,6 @@ const date=new Date().toLocaleDateString("bn-DB",{
                         <p className='text-gray-500'>{date} </p>
                     </div>
                 </div>
-                </Link>
 
                 <div className='flex gap-1'>
                     <Button className="btn"> সাইন ইন</Button>
