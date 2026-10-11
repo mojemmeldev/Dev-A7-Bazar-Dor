@@ -6,8 +6,10 @@ import { Button, FieldError, Form, Input, Label, TextField, } from "@heroui/reac
 import Link from "next/link";
 import { signIn, signUp } from "@/lib/auth-client";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const SignUpPage = () => {
+  const router = useRouter();
   // Email + Password Sign Up
 
   const onSubmit = async ( e: React.FormEvent<HTMLFormElement> ) => { e.preventDefault();
@@ -45,6 +47,8 @@ const SignUpPage = () => {
     }
 
     toast.success( "অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে" );
+     router.push("/");
+    router.refresh();
   };
 
 
@@ -226,6 +230,7 @@ const handleInvalid = ( e: React.FormEvent<HTMLFormElement> ) => { e.preventDefa
 
             {/* Sign Up Button */}
             <Button
+            
               type="submit"
               className="h-11 w-full rounded-lg bg-[#079447] text-[14px] font-semibold text-white shadow-sm transition hover:bg-[#067c3c] sm:text-[15px]"
             >
