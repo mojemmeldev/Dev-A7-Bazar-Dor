@@ -7,6 +7,7 @@ import {Button, Description, FieldError, Form, Input, Label, TextField} from "@h
 
 const SignInPage = () => {
 
+
       const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -25,6 +26,12 @@ const SignInPage = () => {
 });
 console.log(signInData);
   };
+
+  const signInForGoogle = async () => {
+  const data = await signIn.social({
+    provider: "google",
+  });
+};
 
 
 
@@ -78,6 +85,8 @@ console.log(signInData);
           Reset
         </Button>
       </div>
+
+      <Button onClick={signInForGoogle}>গুগল সাইন ইন</Button>
     </Form>
         </div>
     );

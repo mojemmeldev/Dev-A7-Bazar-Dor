@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Tiro_Bangla } from "next/font/google";
 import "./globals.css";
 import Navber from "./components/navSection/Navber";
-import Header from "./components/navSection/Header";
+
 import Fotter from "./components/fotter/Fotter";
+import Header from "./components/navSection/Header";
 
 // bangl font use function
 const tiroBangla = Tiro_Bangla({
