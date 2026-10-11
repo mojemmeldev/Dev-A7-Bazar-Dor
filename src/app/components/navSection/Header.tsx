@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 const Header = () => {
 
     const { data: session } = useSession()
-    const router=useRouter()
+    const router = useRouter()
 
     const handleSignOut = async () => {
         await signOut({
@@ -46,7 +46,8 @@ const Header = () => {
 
                 <div className='flex gap-1'>
                     {
-                        session?.user ? <> <Button onClick={handleSignOut}>লগ আউট</Button></> :
+                        session?.user ? <> <Link href="/profile"><p>Welcome <br /> {session.user.name}</p></Link>
+                            <Button onClick={handleSignOut}>লগ আউট</Button></> :
                             <>
                                 <Link href={"/sign-in"}><Button className="btn"> সাইন ইন</Button></Link>
                                 <Link href={"/sign-up"}><Button className="btn btn-success text-white" > সাইন আপ</Button></Link>
