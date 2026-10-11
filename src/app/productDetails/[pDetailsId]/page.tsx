@@ -1,28 +1,42 @@
+import ApiShare from "@/app/baseApiShare/apiShare";
+import ProductDetailsCard from "@/app/components/productDetailsCard/ProductDetailsCard";
+import { TProduct } from "@/app/components/TypescriptShare";
+import { notFound } from "next/navigation";
 
+const DynamicProductDetailsPage = async ({
+  params,
+}: {
+  params: Promise<{ pDetailsId: string }>;
+}) => {
+  const { pDetailsId } = await params;
 
-import ApiShare from '@/app/baseApiShare/apiShare';
-import ProductDetailsCard from '@/app/components/productDetailsCard/ProductDetailsCard';
-import React from 'react';
+  const res = await fetch(
+    `${ApiShare}/products/${pDetailsId}`
+  );
 
-const DynamicProductDetailsPage = async ({ params }) => {
-    const { pDetailsId } = await params
-    const res = await fetch(`${ApiShare}/products/${pDetailsId}`)
-    console.log(" dp", res);
-    const pDetailsData = await res.json()
-    console.log("y", pDetailsData);
+  if (!res.ok) {
+    notFound();
+  }
 
-    return (
-        <div className=' bg-green-100 '>
+  const pDetailsData: TProduct = await res.json();
 
+  if (!pDetailsData || !pDetailsData.id) {
+    notFound();
+  }
 
-            <div className=' container mx-auto mt-10'>
+  return (
+    <main className="min-h-screen bg-green-100 py-6 sm:py-8 md:py-10 lg:py-12">
 
-                <ProductDetailsCard data={pDetailsData} />
+      <div className="container mx-auto w-full px-3 sm:px-4 md:px-6 lg:px-8">
 
+        <ProductDetailsCard
+          data={pDetailsData}
+        />
 
-            </div>
-        </div>
-    );
+      </div>
+
+    </main>
+  );
 };
 
 export default DynamicProductDetailsPage;

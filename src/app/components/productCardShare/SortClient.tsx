@@ -1,9 +1,13 @@
-
 "use client";
 
 import { useState } from "react";
+import { TProduct } from "../TypescriptShare";
 
-export default function ProductList({ products = [] }) {
+export default function ProductList({
+  products = [],
+}: {
+  products?: TProduct[];
+}) {
   const [sortOrder, setSortOrder] = useState("default");
 
   const sortedProducts = [...products].sort((a, b) => {
@@ -19,68 +23,93 @@ export default function ProductList({ products = [] }) {
   });
 
   return (
-    <section className="space-y-4">
-      {/* Sort dropdown */}
-      <div className="flex items-center justify-end gap-2 rounded-2xl border border-base-200 bg-base-100 p-4">
+    <section className="w-full space-y-4">
+
+      {/* Sort Dropdown */}
+      <div className="flex flex-col gap-2 rounded-2xl border border-base-200 bg-base-100 p-3 sm:flex-row sm:items-center sm:justify-end sm:gap-3 sm:p-4">
+
         <label
           htmlFor="price-sort"
-          className="text-sm text-base-content/60"
+          className="text-[13px] font-medium text-base-content/60 sm:text-sm"
         >
           সাজানো
         </label>
 
         <select
           id="price-sort"
-          className="select select-bordered select-sm w-36"
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value)}
+          className="select select-bordered select-sm w-full rounded-lg text-[13px] sm:w-[190px] sm:text-sm"
         >
-          <option value="default">ডিফল্ট</option>
-          <option value="low-to-high">দাম কম থেকে বেশি</option>
-          <option value="high-to-low">দাম বেশি থেকে কম</option>
+          <option value="default">
+            ডিফল্ট
+          </option>
+
+          <option value="low-to-high">
+            দাম কম থেকে বেশি
+          </option>
+
+          <option value="high-to-low">
+            দাম বেশি থেকে কম
+          </option>
         </select>
+
       </div>
 
-      {/* Product count */}
-      <p className="text-xs text-base-content/60">
-        মোট {sortedProducts.length.toLocaleString("bn-BD")} টি পণ্য দেখানো হচ্ছে
+      {/* Product Count */}
+      <p className="text-[11px] text-base-content/60 sm:text-xs">
+        মোট{" "}
+        {sortedProducts.length.toLocaleString("bn-BD")}{" "}
+        টি পণ্য দেখানো হচ্ছে
       </p>
 
-      {/* Product grid */}
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Product Grid */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3 lg:gap-6">
+
         {sortedProducts.map((product) => (
           <div
             key={product.id}
-            className="card border border-base-200 bg-base-100 shadow-sm transition hover:shadow-md"
+            className="card h-full w-full rounded-xl border border-base-200 bg-base-100 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md sm:rounded-2xl"
           >
-            <div className="card-body p-4">
-              <div className="flex items-center gap-3">
-                <div className="flex size-11 items-center justify-center rounded-xl bg-base-200 text-2xl">
+
+            <div className="card-body p-3 sm:p-4 md:p-5">
+
+              {/* Product Info */}
+              <div className="flex min-w-0 items-center gap-3">
+
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-base-200 text-xl sm:h-11 sm:w-11 sm:text-2xl">
                   {product.image || "🍚"}
                 </div>
 
-                <div>
-                  <h3 className="font-bold">
+                <div className="min-w-0 flex-1">
+
+                  <h3 className="break-words text-sm font-bold leading-5 sm:text-base">
                     {product.nameBn}
                   </h3>
-                  <p className="text-xs text-base-content/60">
+
+                  <p className="mt-0.5 text-[11px] text-base-content/60 sm:text-xs">
                     প্রতি কেজি
                   </p>
+
                 </div>
+
               </div>
 
-              <div className="mt-2 flex items-end justify-between gap-2">
+              {/* Price Info */}
+              <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+
                 <div>
-                  <p className="text-xs text-base-content/60">
+                  <p className="text-[11px] text-base-content/60 sm:text-xs">
                     আজকের দাম
                   </p>
-                  <p className="text-lg font-bold">
+
+                  <p className="mt-1 text-base font-bold sm:text-lg">
                     {product.today.toLocaleString("bn-BD")} টাকা
                   </p>
                 </div>
 
                 <span
-                  className={`badge badge-sm ${
+                  className={`badge badge-sm w-fit shrink-0 ${
                     product.change?.dir === "up"
                       ? "badge-error"
                       : product.change?.dir === "down"
@@ -94,11 +123,16 @@ export default function ProductList({ products = [] }) {
                       ? `▼ ${product.change.pct}%`
                       : "—"}
                 </span>
+
               </div>
+
             </div>
+
           </div>
         ))}
+
       </div>
+
     </section>
   );
 }

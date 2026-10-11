@@ -11,25 +11,20 @@ import Banner from "./components/homeSection/Banner";
 
 export default function Home() {
   return (
-    <div className=" bg-green-100 ">
-      <div className=" container mx-auto bg-amber-400 ">
+    <div className="bg-green-100 py-10">
+  <div className="container mx-auto">
 
-        <div>
-          <Banner></Banner>
-        </div>
-
-        <div >
-          <TodayUp></TodayUp>
-        </div>
-
-        <div>
-          <TodayDown></TodayDown>
-        </div>
-        <div>
-          <All></All>
-        </div>
-
-      </div>
+    <div className="mb-10">
+      <Banner />
     </div>
+
+    <div className="space-y-20">
+      <TodayUp />
+      <TodayDown />
+      <All />
+    </div>
+
+  </div>
+</div>
   );
 }

@@ -5,6 +5,11 @@ import Navber from "./components/navSection/Navber";
 
 import Fotter from "./components/fotter/Fotter";
 import Header from "./components/navSection/Header";
+import Marquee from "./components/navSection/Marquee";
+import ToastProvider from "./components/ToastProvider";
+
+
+
 
 // bangl font use function
 const tiroBangla = Tiro_Bangla({
@@ -32,11 +37,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${tiroBangla.className}  h-full antialiased`} //declear bangla function
     >
       <body className="min-h-full flex flex-col  ">
-        <Header></Header>
-        <Navber></Navber>
 
+        <div className=" sticky top-0 z-50 bg-gray-50 shadow py-5">
+          <Header></Header>
+        <Navber></Navber>
+        <Marquee></Marquee>
+
+        </div>
+        
         <main>
         {children}
+        
+         <ToastProvider/>
         </main>
         
         <Fotter></Fotter>
