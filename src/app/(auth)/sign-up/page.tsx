@@ -8,6 +8,9 @@ import { signIn, signUp } from "@/lib/auth-client";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
+
+
+
 const SignUpPage = () => {
   const router = useRouter();
   // Email + Password Sign Up
@@ -39,7 +42,7 @@ const SignUpPage = () => {
     }
 
     // Better Auth Sign Up
-    const { data: signUpData, error, } = await signUp.email({ name, email, password, callbackURL: "/", });
+    const { data: signUpData, error, } = await signUp.email({ name, email, password,  });
     if (error) {
       toast.error( error.message || "সাইন আপ করতে সমস্যা হয়েছে" );
       console.log("SignUp error:", error);
